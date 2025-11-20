@@ -51,20 +51,14 @@ generate_pdf "CV_Tobias_Breitwieser_Vollversion_DE" "jernoxit" "-a full-version"
 # 2. Kurzversion mit jernoxIT Design (Deutsch, ohne Archiv-Projekte)
 generate_pdf "CV_Tobias_Breitwieser_Kurzversion_DE" "jernoxit" "" "cv-main.adoc"
 
-# 3. Minimal Design Vollversion (Deutsch)
-generate_pdf "CV_Tobias_Breitwieser_Minimal_DE" "minimal" "-a full-version" "cv-main.adoc"
-
 echo ""
 echo -e "${BLUE}--- English Versions ---${NC}"
 
-# 4. Full Version with jernoxIT Design (English)
+# 3. Full Version with jernoxIT Design (English)
 generate_pdf "CV_Tobias_Breitwieser_Full_EN" "jernoxit" "-a full-version" "cv-main-en.adoc"
 
-# 5. Short Version with jernoxIT Design (English, without archive projects)
+# 4. Short Version with jernoxIT Design (English, without archive projects)
 generate_pdf "CV_Tobias_Breitwieser_Short_EN" "jernoxit" "" "cv-main-en.adoc"
-
-# 6. Minimal Design Full Version (English)
-generate_pdf "CV_Tobias_Breitwieser_Minimal_EN" "minimal" "-a full-version" "cv-main-en.adoc"
 
 # Zeige erzeugte Dateien
 echo ""

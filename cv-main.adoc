@@ -10,6 +10,9 @@ include::attributes.adoc[]
 :icons: font
 :source-highlighter: rouge
 
+// Company Branding (wählbar via company-branding Attribut)
+include::sections/company/{company-branding}.adoc[]
+
 // Header mit Name, Titel und Foto
 [cols="3,1",frame=none,grid=none]
 |===

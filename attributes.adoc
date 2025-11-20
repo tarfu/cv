@@ -1,6 +1,10 @@
 // CV Attributes - Diese Datei enthält alle Variablen
 // Ihre Assistenz kann diese Werte einfach anpassen
 
+// Company Branding (wählt die Datei aus sections/company/)
+// Optionen: jernoxit, none, oder andere Firmennamen
+:company-branding: jernoxit
+
 // Persönliche Daten
 :name: Tobias Breitwieser
 :job-title: Application Development, DevOps, and AI Integration

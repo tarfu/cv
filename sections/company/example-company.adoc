@@ -1,0 +1,15 @@
+// Example Company Branding Template
+// Copy this file and rename it to your company name (e.g., acme-corp.adoc)
+// Then update the logo path and tagline below
+
+[.company-branding]
+--
+// Replace with your company logo file (place in project root)
+image::your-company-logo.png[width=25%,align=left]
+
+[.company-tagline]
+// Replace with your company tagline
+*Your Company Tagline Here*
+--
+
+'''

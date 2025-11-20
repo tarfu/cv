@@ -1,0 +1,10 @@
+// jernoxIT Company Branding
+[.company-branding]
+--
+image::jernoxit-logo.png[width=25%,align=left]
+
+[.company-tagline]
+*Systems Engineering & Cloud Solutions*
+--
+
+'''

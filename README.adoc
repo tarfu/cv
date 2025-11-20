@@ -24,15 +24,13 @@ Die PDFs finden Sie dann im `output/` Verzeichnis:
 
 **Deutsche Versionen:**
 
-* `CV_Tobias_Breitwieser_Vollversion_DE.pdf` - Vollständiger CV im jernoxIT-Design
-* `CV_Tobias_Breitwieser_Kurzversion_DE.pdf` - Ohne ältere Projekte
-* `CV_Tobias_Breitwieser_Minimal_DE.pdf` - Minimalistisches Design
+* `CV_Tobias_Breitwieser_Vollversion_DE.pdf` - Vollständiger CV mit allen Projekten
+* `CV_Tobias_Breitwieser_Kurzversion_DE.pdf` - Kompakter CV ohne Archiv-Projekte
 
 **Englische Versionen:**
 
-* `CV_Tobias_Breitwieser_Full_EN.pdf` - Full CV with jernoxIT design
-* `CV_Tobias_Breitwieser_Short_EN.pdf` - Without archive projects
-* `CV_Tobias_Breitwieser_Minimal_EN.pdf` - Minimal design
+* `CV_Tobias_Breitwieser_Full_EN.pdf` - Full CV with all projects
+* `CV_Tobias_Breitwieser_Short_EN.pdf` - Compact CV without archive projects
 
 == Dateistruktur
 
@@ -53,15 +51,19 @@ cv-system/
 │   │   ├── competencies.adoc
 │   │   ├── education.adoc
 │   │   └── locations.adoc
-│   └── en/                  # English Sections
-│       ├── contact.adoc
-│       ├── skills.adoc
-│       ├── profile.adoc
-│       ├── projects-current.adoc
-│       ├── projects-archive.adoc
-│       ├── competencies.adoc
-│       ├── education.adoc
-│       └── locations.adoc
+│   ├── en/                  # English Sections
+│   │   ├── contact.adoc
+│   │   ├── skills.adoc
+│   │   ├── profile.adoc
+│   │   ├── projects-current.adoc
+│   │   ├── projects-archive.adoc
+│   │   ├── competencies.adoc
+│   │   ├── education.adoc
+│   │   └── locations.adoc
+│   └── company/             # Company Branding
+│       ├── jernoxit.adoc    # jernoxIT branding (default)
+│       ├── none.adoc        # No branding
+│       └── example-company.adoc # Template
 ├── themes/                   # Design-Themes
 │   ├── jernoxit-theme.yml   # jernoxIT Design
 │   └── minimal-theme.yml    # Minimal Design
@@ -72,6 +74,136 @@ cv-system/
 ├── output/                   # Generierte PDFs
 └── README.adoc              # Diese Datei
 ----
+
+== Company Branding (Firmenkennzeichnung)
+
+Das CV-System unterstützt modulare Company-Brandings, ideal für Consultants, die für verschiedene Auftraggeber arbeiten.
+
+=== Wie funktioniert es?
+
+Das Branding wird über eine Attribut-Variable gesteuert und lädt die entsprechende Branding-Datei:
+
+[source,asciidoc]
+----
+// In attributes.adoc
+:company-branding: jernoxit
+
+// In cv-main.adoc
+include::sections/company/{company-branding}.adoc[]
+----
+
+=== Standard-Branding (jernoxIT)
+
+**Standardmäßig aktiv**: jernoxIT Logo (25% Seitenbreite) + Tagline "Systems Engineering & Cloud Solutions"
+
+Gesteuert durch `sections/company/jernoxit.adoc`
+
+=== Branding wechseln
+
+**Option 1: In Attributen ändern** (dauerhaft)
+
+Bearbeiten Sie `attributes.adoc` oder `attributes-en.adoc`:
+
+[source,asciidoc]
+----
+:company-branding: other-company
+----
+
+**Option 2: Beim Build überschreiben** (einmalig)
+
+[source,bash]
+----
+# Anderes Branding
+asciidoctor-pdf -a company-branding=acme-corp cv-main.adoc -o output/cv-acme.pdf
+
+# Kein Branding
+asciidoctor-pdf -a company-branding=none cv-main.adoc -o output/cv-nobranding.pdf
+----
+
+=== Neues Company-Branding erstellen
+
+**Schritt 1**: Kopieren Sie die Vorlage:
+[source,bash]
+----
+cp sections/company/example-company.adoc sections/company/acme-corp.adoc
+----
+
+**Schritt 2**: Bearbeiten Sie die neue Datei:
+[source,asciidoc]
+----
+[.company-branding]
+--
+image::acme-corp-logo.png[width=25%,align=left]
+
+[.company-tagline]
+*Innovation Through Excellence*
+--
+
+'''
+----
+
+**Schritt 3**: Logo-Datei ins Projektverzeichnis legen:
+[source,bash]
+----
+# Logo ins Hauptverzeichnis kopieren
+cp ~/path/to/acme-corp-logo.png .
+----
+
+**Schritt 4**: Aktivieren:
+[source,asciidoc]
+----
+# In attributes.adoc
+:company-branding: acme-corp
+----
+
+**Schritt 5**: Build:
+[source,bash]
+----
+./build.sh
+----
+
+=== Verfügbare Brandings
+
+[cols="2,5"]
+|===
+|Datei |Beschreibung
+
+|`jernoxit.adoc`
+|jernoxIT Logo + "Systems Engineering & Cloud Solutions" (Standard)
+
+|`none.adoc`
+|Kein Branding (leere Datei)
+
+|`example-company.adoc`
+|Vorlage für neue Brandings
+|===
+
+=== Best Practices für Consultants
+
+**Multi-Client Setup:**
+
+Erstellen Sie für jeden Hauptkunden ein Branding:
+[source,bash]
+----
+sections/company/
+├── jernoxit.adoc
+├── client-a.adoc
+├── client-b.adoc
+└── none.adoc
+----
+
+**Schnelles Switching im build.sh:**
+[source,bash]
+----
+# Verschiedene Client-Versionen generieren
+generate_pdf "CV_ClientA" "jernoxit" "-a company-branding=client-a" "cv-main.adoc"
+generate_pdf "CV_ClientB" "jernoxit" "-a company-branding=client-b" "cv-main.adoc"
+generate_pdf "CV_Generic" "jernoxit" "-a company-branding=none" "cv-main.adoc"
+----
+
+**Automatische Builds via Workflow:**
+
+Für automatische Builds mit verschiedenen Brandings können Sie mehrere Workflow-Jobs definieren oder Parameter übergeben.
 
 == Häufige Aufgaben
 

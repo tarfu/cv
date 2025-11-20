@@ -1,6 +1,10 @@
 // CV Attributes - English Version
 // Template for creating an English CV
 
+// Company Branding (selects the file from sections/company/)
+// Options: jernoxit, none, or other company names
+:company-branding: jernoxit
+
 // Personal Data
 :name: Tobias Breitwieser
 :job-title: Application Development, DevOps, and AI Integration

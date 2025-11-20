@@ -1,0 +1,2 @@
+// No Company Branding
+// This file is intentionally empty to allow CVs without company branding
