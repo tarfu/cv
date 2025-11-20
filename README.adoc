@@ -1,235 +1,158 @@
-= CV Management System - Anleitung
+= CV Management System
 :toc:
-:toclevels: 3
+:toclevels: 2
 
 image:https://github.com/tarfu/cv/actions/workflows/build-cv.yml/badge.svg[Build Status,link=https://github.com/tarfu/cv/actions/workflows/build-cv.yml]
 
 == Überblick
 
-Dieses System verwaltet den Lebenslauf von Tobias Breitwieser mit AsciiDoc. Die Daten sind von der Gestaltung getrennt, sodass verschiedene PDF-Versionen aus den gleichen Quelldaten erzeugt werden können.
+Professionelles CV-Management-System mit AsciiDoc, optimiert für Consultants.
 
-Die CVs sind in **Deutsch** und **Englisch** verfügbar und werden automatisch bei jedem Push auf den main Branch über GitHub Actions gebaut.
+**Features:**
+
+* 📄 **Mehrsprachig**: Deutsch & Englisch
+* 🏢 **Company Branding**: Wechsel zwischen Auftraggebern per Attribut
+* 📅 **Automatisches Datum**: Lokal aktuell, CI commit-basiert
+* 🚀 **GitHub Actions**: Automatische Builds & Releases
+* 🐳 **Docker-basiert**: Konsistente Build-Umgebung
+* 📦 **Flexible Ausgabe**: Individual-PDFs + ZIP in Releases
 
 == Schnellstart
 
-=== PDF generieren
+=== Installation
+
+**Voraussetzung**: https://taskfile.dev[Task] installieren
 
 [source,bash]
 ----
-cd cv-system
-./build.sh
+# macOS
+brew install go-task/tap/go-task
+
+# Linux
+sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
 ----
 
-Die PDFs finden Sie dann im `output/` Verzeichnis:
-
-**Deutsche Versionen:**
-
-* `CV_Tobias_Breitwieser_Vollversion_DE.pdf` - Vollständiger CV mit allen Projekten
-* `CV_Tobias_Breitwieser_Kurzversion_DE.pdf` - Kompakter CV ohne Archiv-Projekte
-
-**Englische Versionen:**
-
-* `CV_Tobias_Breitwieser_Full_EN.pdf` - Full CV with all projects
-* `CV_Tobias_Breitwieser_Short_EN.pdf` - Compact CV without archive projects
-
-== Dateistruktur
-
-[source]
-----
-cv-system/
-├── cv-main.adoc              # Hauptdatei (Deutsch)
-├── cv-main-en.adoc           # Hauptdatei (Englisch)
-├── attributes.adoc           # Variablen (Deutsch)
-├── attributes-en.adoc        # Variablen (Englisch)
-├── sections/                 # Inhaltliche Sections
-│   ├── de/                  # Deutsche Sections
-│   │   ├── contact.adoc
-│   │   ├── skills.adoc
-│   │   ├── profile.adoc
-│   │   ├── projects-current.adoc
-│   │   ├── projects-archive.adoc
-│   │   ├── competencies.adoc
-│   │   ├── education.adoc
-│   │   └── locations.adoc
-│   ├── en/                  # English Sections
-│   │   ├── contact.adoc
-│   │   ├── skills.adoc
-│   │   ├── profile.adoc
-│   │   ├── projects-current.adoc
-│   │   ├── projects-archive.adoc
-│   │   ├── competencies.adoc
-│   │   ├── education.adoc
-│   │   └── locations.adoc
-│   └── company/             # Company Branding
-│       ├── jernoxit.adoc    # jernoxIT branding (default)
-│       ├── none.adoc        # No branding
-│       └── example-company.adoc # Template
-├── themes/                   # Design-Themes
-│   ├── jernoxit-theme.yml   # jernoxIT Design
-│   └── minimal-theme.yml    # Minimal Design
-├── .github/
-│   └── workflows/
-│       └── build-cv.yml     # GitHub Actions Workflow
-├── build.sh                  # Build-Script
-├── output/                   # Generierte PDFs
-└── README.adoc              # Diese Datei
-----
-
-== Company Branding (Firmenkennzeichnung)
-
-Das CV-System unterstützt modulare Company-Brandings, ideal für Consultants, die für verschiedene Auftraggeber arbeiten.
-
-=== Wie funktioniert es?
-
-Das Branding wird über eine Attribut-Variable gesteuert und lädt die entsprechende Branding-Datei:
-
-[source,asciidoc]
-----
-// In attributes.adoc
-:company-branding: jernoxit
-
-// In cv-main.adoc
-include::sections/company/{company-branding}.adoc[]
-----
-
-=== Standard-Branding (jernoxIT)
-
-**Standardmäßig aktiv**: jernoxIT Logo (25% Seitenbreite) + Tagline "Systems Engineering & Cloud Solutions"
-
-Gesteuert durch `sections/company/jernoxit.adoc`
-
-=== Branding wechseln
-
-**Option 1: In Attributen ändern** (dauerhaft)
-
-Bearbeiten Sie `attributes.adoc` oder `attributes-en.adoc`:
-
-[source,asciidoc]
-----
-:company-branding: other-company
-----
-
-**Option 2: Beim Build überschreiben** (einmalig)
+=== CVs bauen
 
 [source,bash]
 ----
-# Anderes Branding
-asciidoctor-pdf -a company-branding=acme-corp cv-main.adoc -o output/cv-acme.pdf
-
-# Kein Branding
-asciidoctor-pdf -a company-branding=none cv-main.adoc -o output/cv-nobranding.pdf
+task build
 ----
 
-=== Neues Company-Branding erstellen
+Generiert 4 PDFs im `output/` Verzeichnis:
 
-**Schritt 1**: Kopieren Sie die Vorlage:
+* `CV_Tobias_Breitwieser_Vollversion_DE.pdf` - Vollständig (DE)
+* `CV_Tobias_Breitwieser_Kurzversion_DE.pdf` - Kompakt (DE)
+* `CV_Tobias_Breitwieser_Full_EN.pdf` - Full (EN)
+* `CV_Tobias_Breitwieser_Short_EN.pdf` - Short (EN)
+
+=== Release erstellen
+
+[source,bash]
+----
+# Automatischer Tag (v2025.11.20)
+task release
+
+# Custom Tag
+TAG=v1.2.3 task release
+
+# Mehrere Releases am selben Tag: v2025.11.20, v2025.11.20-1, v2025.11.20-2
+----
+
+GitHub Action erstellt automatisch Release mit Individual-PDFs + ZIP.
+
+== Features im Detail
+
+=== Mehrsprachigkeit
+
+Vollständig getrennte Inhalte für Deutsch und Englisch:
+
+----
+sections/
+├── de/              # Deutsche Sections
+│   ├── profile.adoc
+│   ├── skills.adoc
+│   ├── projects-current.adoc
+│   └── ...
+└── en/              # English Sections
+    ├── profile.adoc
+    ├── skills.adoc
+    ├── projects-current.adoc
+    └── ...
+----
+
+=== Company Branding
+
+Ideal für Consultants - wechsle zwischen Auftraggebern:
+
+**In `attributes.adoc` oder `attributes-en.adoc`:**
+[source,asciidoc]
+----
+:company-branding: jernoxit  # jernoxIT Logo + Tagline
+:company-branding: none      # Kein Branding
+:company-branding: client-a  # Custom Branding
+----
+
+**Neues Branding erstellen:**
 [source,bash]
 ----
 cp sections/company/example-company.adoc sections/company/acme-corp.adoc
+# Logo anpassen, Tagline ändern
 ----
 
-**Schritt 2**: Bearbeiten Sie die neue Datei:
-[source,asciidoc]
-----
-[.company-branding]
---
-image::acme-corp-logo.png[width=25%,align=left]
+**Verfügbare Brandings:**
 
-[.company-tagline]
-*Innovation Through Excellence*
---
+* `jernoxit.adoc` - jernoxIT (Standard)
+* `none.adoc` - Kein Branding
+* `example-company.adoc` - Template
 
-'''
-----
+=== Automatisches Datum
 
-**Schritt 3**: Logo-Datei ins Projektverzeichnis legen:
-[source,bash]
-----
-# Logo ins Hauptverzeichnis kopieren
-cp ~/path/to/acme-corp-logo.png .
-----
+Das `last-updated` Datum wird automatisch gesetzt:
 
-**Schritt 4**: Aktivieren:
-[source,asciidoc]
-----
-# In attributes.adoc
-:company-branding: acme-corp
-----
+* **Lokal**: Aktuelles Datum (`20.11.2025` / `November 20, 2025`)
+* **GitHub Actions**: Commit-Datum (reproduzierbar)
+* **Sprachspezifisch**: Deutsch `dd.mm.yyyy`, English `Month dd, yyyy`
 
-**Schritt 5**: Build:
-[source,bash]
-----
-./build.sh
-----
+=== GitHub Actions
 
-=== Verfügbare Brandings
+**Automatischer Build bei:**
 
-[cols="2,5"]
-|===
-|Datei |Beschreibung
+* Push auf `main` branch
+* Pull Requests
+* Git Tags (`v*`)
+* Manuell über GitHub UI
 
-|`jernoxit.adoc`
-|jernoxIT Logo + "Systems Engineering & Cloud Solutions" (Standard)
+**Docker-basiert:**
 
-|`none.adoc`
-|Kein Branding (leere Datei)
+* Nutzt `asciidoctor/docker-asciidoctor` Container
+* Schnell & konsistent
+* Keine manuelle Dependency-Installation
 
-|`example-company.adoc`
-|Vorlage für neue Brandings
-|===
+**Artifacts:**
 
-=== Best Practices für Consultants
-
-**Multi-Client Setup:**
-
-Erstellen Sie für jeden Hauptkunden ein Branding:
-[source,bash]
-----
-sections/company/
-├── jernoxit.adoc
-├── client-a.adoc
-├── client-b.adoc
-└── none.adoc
-----
-
-**Schnelles Switching im build.sh:**
-[source,bash]
-----
-# Verschiedene Client-Versionen generieren
-generate_pdf "CV_ClientA" "jernoxit" "-a company-branding=client-a" "cv-main.adoc"
-generate_pdf "CV_ClientB" "jernoxit" "-a company-branding=client-b" "cv-main.adoc"
-generate_pdf "CV_Generic" "jernoxit" "-a company-branding=none" "cv-main.adoc"
-----
-
-**Automatische Builds via Workflow:**
-
-Für automatische Builds mit verschiedenen Brandings können Sie mehrere Workflow-Jobs definieren oder Parameter übergeben.
+* Workflow-Runs: 4 separate PDF-Downloads (90 Tage)
+* Releases: 4 Individual-PDFs + ZIP mit allen Versionen
 
 == Häufige Aufgaben
 
-=== 1. Variablen ändern (Rate, Datum, etc.)
+=== 1. Variablen ändern
 
-Datei: `attributes.adoc`
-
-Beispiele:
+**Datei**: `attributes.adoc` (Deutsch) oder `attributes-en.adoc` (Englisch)
 
 [source,asciidoc]
 ----
-:hourly-rate: 130,0 EUR          // Stundensatz anpassen
-:availability-date: 15.02.2026   // Verfügbarkeitsdatum ändern
-:availability-percent: 90%       // Verfügbarkeit in Prozent
+:hourly-rate: 130,0 EUR
+:availability-date: 01.03.2026
+:availability-percent: 90%
 ----
-
-Nach dem Ändern: `./build.sh` ausführen
 
 === 2. Neues Projekt hinzufügen
 
-**Wichtig**: Projekt in beiden Sprachen hinzufügen!
+**Wichtig**: In beiden Sprachen hinzufügen!
 
 * Deutsch: `sections/de/projects-current.adoc`
 * Englisch: `sections/en/projects-current.adoc`
-
-Template für ein neues Projekt:
 
 [source,asciidoc]
 ----
@@ -238,391 +161,163 @@ Template für ein neues Projekt:
 *Rolle:* Ihre Rolle +
 *Kunde:* Kundenname
 
-Beschreibung des Projekts. Was wurde gemacht, was war das Ziel,
-welche Herausforderungen gab es?
+Projektbeschreibung hier...
 
-*Aufgaben:* (optional)
-
-* Aufzählung von Haupttätigkeiten
-* Weitere wichtige Aufgaben
-* Besondere Achievements
-
-*Technologien:* Tech1, Tech2, Tech3, Tech4
+*Technologien:* Tech1, Tech2, Tech3
 
 '''
 ----
 
-[TIP]
-====
-`'''` erzeugt eine horizontale Trennlinie zwischen Projekten.
-====
+=== 3. Company Branding wechseln
 
-=== 3. Projekt ins Archiv verschieben
+**Dauerhaft** in `attributes.adoc`:
+[source,asciidoc]
+----
+:company-branding: client-name
+----
 
-**Wichtig**: In beiden Sprachen durchführen!
+**Einmalig** beim Build:
+[source,bash]
+----
+asciidoctor-pdf -a company-branding=client-name cv-main.adoc -o output/cv.pdf
+----
 
-. Projekt aus `sections/de/projects-current.adoc` und `sections/en/projects-current.adoc` ausschneiden
-. In `sections/de/projects-archive.adoc` und `sections/en/projects-archive.adoc` als Tabellenzeile einfügen:
+=== 4. Projekt archivieren
+
+. Projekt aus `sections/de/projects-current.adoc` & `sections/en/projects-current.adoc` ausschneiden
+. Als Tabellenzeile in `projects-archive.adoc` einfügen:
 
 [source,asciidoc]
 ----
 |2025
-|Projekttitel (kurz)
+|Projekttitel
 |Kunde/Rolle
-|Technologien (kurz)
+|Technologien
 ----
 
-=== 4. Kompetenzen aktualisieren
+== Dateistruktur
 
-**Wichtig**: In beiden Sprachen aktualisieren!
-
-* Deutsch: `sections/de/skills.adoc`
-* Englisch: `sections/en/skills.adoc`
-
-Format:
-
-[source,asciidoc]
+[source]
 ----
-**Kategorie**:: Wert1, Wert2, Wert3
-----
-
-Beispiel:
-
-[source,asciidoc]
-----
-**Programmiersprachen**:: Go, Rust, Java, Kotlin, Python, TypeScript
-----
-
-== AsciiDoc Cheatsheet
-
-=== Grundlegende Formatierung
-
-[cols="2,3,3"]
-|===
-|Element |AsciiDoc |Ergebnis
-
-|Fett
-|`\*fett*`
-|*fett*
-
-|Kursiv
-|`\_kursiv_`
-|_kursiv_
-
-|Code
-|`\`code``
-|`code`
-
-|Zeilenumbruch
-|` +` am Zeilenende
-|Neue Zeile
-
-|Horizontale Linie
-|`'''`
-|---
-
-|===
-
-=== Überschriften
-
-[source,asciidoc]
-----
-= Titel (Level 0)
-== Überschrift Level 1
-=== Überschrift Level 2
-==== Überschrift Level 3
+cv-system/
+├── Taskfile.yml              # Task-Definitionen
+├── build.sh                  # Build-Script (via Docker unterstützt)
+├── cv-main.adoc              # Haupt-CV (Deutsch)
+├── cv-main-en.adoc           # Haupt-CV (Englisch)
+├── attributes.adoc           # Variablen (Deutsch)
+├── attributes-en.adoc        # Variablen (Englisch)
+├── sections/
+│   ├── de/                  # Deutsche Inhalte
+│   ├── en/                  # English Content
+│   └── company/             # Company Brandings
+├── themes/                   # PDF Themes
+├── .github/workflows/        # GitHub Actions
+└── output/                   # Generierte PDFs
 ----
 
-=== Listen
+== GitHub Actions Details
 
-[source,asciidoc]
-----
-// Normale Liste
-* Punkt 1
-* Punkt 2
-** Unterpunkt
-* Punkt 3
+=== Workflow-Artifacts
 
-// Nummerierte Liste
-. Erster
-. Zweiter
-. Dritter
+Nach jedem Build auf `main` oder bei PRs:
 
-// Definition Liste
-Begriff:: Definition des Begriffs
-Anderer Begriff:: Andere Definition
-----
+. Gehe zu https://github.com/tarfu/cv/actions
+. Wähle Workflow-Run
+. Download individual PDFs unter "Artifacts"
 
-=== Tabellen
-
-[source,asciidoc]
-----
-[cols="1,3,2"]
-|===
-|Spalte 1 |Spalte 2 |Spalte 3
-
-|Wert A
-|Wert B
-|Wert C
-
-|Wert D
-|Wert E
-|Wert F
-|===
-----
-
-Mit Header:
-
-[source,asciidoc]
-----
-[cols="1,3,2",options="header"]
-|===
-|Header 1 |Header 2 |Header 3
-
-|Daten
-|Mehr Daten
-|Noch mehr
-|===
-----
-
-=== Admonitions (Hinweise)
-
-[source,asciidoc]
-----
-[NOTE]
-====
-Dies ist ein Hinweis.
-====
-
-[TIP]
-====
-Dies ist ein Tipp.
-====
-
-[IMPORTANT]
-====
-Dies ist wichtig.
-====
-
-[WARNING]
-====
-Dies ist eine Warnung.
-====
-----
-
-=== Links und Fußnoten
-
-[source,asciidoc]
-----
-// Link
-https://www.jernoxit.de[jernoxIT Website]
-
-// Fußnote
-Text mit Fußnote.footnote:[Dies ist die Fußnote]
-
-// Nummerierte Fußnote
-Text^1^
-
-Später:
-^1^ Dies ist die Erklärung
-----
-
-=== Sonderformatierung
-
-[source,asciidoc]
-----
-// Seitenumbruch
-<<<
-
-// Box/Sidebar
-****
-Inhalt in einer Box
-****
-
-// Zitat
-[quote, Autor]
-____
-Zitattext hier
-____
-----
-
-== GitHub Actions - Automatischer Build
-
-Das Repository nutzt GitHub Actions für automatisches Bauen der CV-PDFs. Der Workflow wird ausgelöst bei:
-
-* **Push auf main Branch**: Automatischer Build bei jeder Änderung
-* **Pull Requests**: Build-Preview für PRs
-* **Tags** (z.B. `v1.0.0`): Automatisches Release mit PDF-Assets
-* **Manueller Trigger**: Über GitHub UI → Actions → "Build CV PDFs" → "Run workflow"
-
-=== PDFs herunterladen
-
-**Workflow-Artefakte** (nach Push/PR):
-
-. Gehen Sie zu: https://github.com/tarfu/cv/actions
-. Klicken Sie auf den letzten erfolgreichen Workflow-Run
-. Unter "Artifacts" finden Sie `cv-pdfs` zum Download
-. Artefakte werden 90 Tage gespeichert
-
-**Release-Assets** (bei Tags):
-
-. Gehen Sie zu: https://github.com/tarfu/cv/releases
-. Wählen Sie das gewünschte Release (z.B. `v1.2.0`)
-. Alle 6 PDFs sind direkt downloadbar
-
-=== Release erstellen
-
-Um ein neues Release mit PDFs zu erstellen:
+=== Releases erstellen
 
 [source,bash]
 ----
-# Tag erstellen und pushen
-git tag v1.2.0
-git push origin v1.2.0
+task release
 ----
 
-Die GitHub Action erstellt automatisch ein Release mit allen PDFs.
+Erstellt automatisch:
 
-=== Manuellen Build starten
+* Git Tag (z.B. `v2025.11.20`)
+* GitHub Release mit Beschreibung
+* 4 Individual-PDFs als separate Downloads
+* 1 ZIP-Datei mit allen PDFs (`CV_All_Versions_v2025.11.20.zip`)
 
-. Gehen Sie zu: https://github.com/tarfu/cv/actions/workflows/build-cv.yml
-. Klicken Sie auf "Run workflow"
-. Wählen Sie den Branch
-. Klicken Sie auf "Run workflow"
+View: https://github.com/tarfu/cv/releases
 
-Die PDFs sind nach ~2 Minuten als Artefakt verfügbar.
+=== Manueller Workflow-Trigger
 
-== Erweiterte Nutzung
+. https://github.com/tarfu/cv/actions/workflows/build-cv.yml
+. "Run workflow" → Branch wählen → "Run workflow"
 
-=== Verschiedene Versionen generieren
+== Lokale Builds
 
-**Deutsche Versionen:**
-
-Nur jernoxIT Vollversion:
-[source,bash]
-----
-asciidoctor-pdf -a pdf-theme=jernoxit -a full-version \
-  cv-main.adoc -o output/vollversion_de.pdf
-----
-
-Nur jernoxIT Kurzversion:
-[source,bash]
-----
-asciidoctor-pdf -a pdf-theme=jernoxit \
-  cv-main.adoc -o output/kurzversion_de.pdf
-----
-
-**Englische Versionen:**
-
-Nur jernoxIT Full Version:
-[source,bash]
-----
-asciidoctor-pdf -a pdf-theme=jernoxit -a full-version \
-  cv-main-en.adoc -o output/full_en.pdf
-----
-
-Nur jernoxIT Short Version:
-[source,bash]
-----
-asciidoctor-pdf -a pdf-theme=jernoxit \
-  cv-main-en.adoc -o output/short_en.pdf
-----
-
-**HTML Versionen** (für Website):
-[source,bash]
-----
-# Deutsch
-asciidoctor cv-main.adoc -o output/cv_de.html
-
-# Englisch
-asciidoctor cv-main-en.adoc -o output/cv_en.html
-----
-
-=== Bedingte Inhalte
-
-In den Section-Dateien können Sie bedingte Inhalte nutzen:
-
-[source,asciidoc]
-----
-ifdef::detailed[]
-Dies erscheint nur bei detaillierter Version
-endif::[]
-
-ifndef::detailed[]
-Dies erscheint nur bei Kurzversion
-endif::[]
-----
-
-Dann beim Build:
-[source,bash]
-----
-asciidoctor-pdf -a detailed cv-main.adoc -o output/detailed.pdf
-----
-
-== Tipps für die Pflege
-
-=== DO's ✓
-
-* **Regelmäßig committen**: Nutzen Sie Git für Versionsverwaltung
-* **Klein halten**: Kurze, prägnante Beschreibungen
-* **Konsistent formatieren**: Gleiche Struktur bei allen Projekten
-* **Variablen nutzen**: Datum, Rate etc. in `attributes.adoc` und `attributes-en.adoc`
-* **Beide Sprachen pflegen**: Änderungen immer in DE und EN durchführen
-* **Testen**: Nach Änderungen immer `./build.sh` ausführen
-* **GitHub Actions nutzen**: Automatischer Build bei Push auf main
-
-=== DON'Ts ✗
-
-* **Keine manuellen Zeilenumbrüche**: AsciiDoc macht das automatisch
-* **Keine HTML-Tags**: Nutzen Sie AsciiDoc-Syntax
-* **Kein Copy-Paste aus Word**: Formatierung kann kaputt gehen
-* **Nicht cv-main.adoc ändern**: Nur für Struktur-Änderungen
-
-== Troubleshooting
-
-=== PDF wird nicht generiert
-
-Prüfen Sie:
-
-. Ist asciidoctor-pdf installiert?
-+
-[source,bash]
-----
-gem install asciidoctor-pdf
-----
-
-. Gibt es Syntax-Fehler?
-+
-[source,bash]
-----
-asciidoctor-pdf cv-main.adoc
-----
-+
-Fehler werden angezeigt
-
-. Alle Dateien vorhanden?
-+
-Prüfen Sie ob alle `include::` Dateien existieren
-
-=== Formatierung sieht komisch aus
-
-* Prüfen Sie Tabellen-Syntax (oft Fehlerquelle)
-* Kontrollieren Sie ob Admonition-Blöcke geschlossen sind (`====`)
-* Achten Sie auf korrekte Anzahl von `=` bei Überschriften
-
-=== Theme wird nicht angewendet
+=== Mit Task (empfohlen)
 
 [source,bash]
 ----
-# Prüfen Sie den Theme-Pfad
-asciidoctor-pdf -a pdf-theme=jernoxit -a pdf-themesdir=themes cv-main.adoc
+task build
 ----
 
-== Weitere Ressourcen
+=== Mit build.sh direkt
 
-* AsciiDoc Syntax: https://docs.asciidoctor.org/asciidoc/latest/
-* PDF Theming: https://docs.asciidoctor.org/pdf-converter/latest/theme/
-* AsciiDoc Writer's Guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+[source,bash]
+----
+./build.sh
+----
+
+=== Mit Docker (wie CI)
+
+[source,bash]
+----
+docker run --rm \
+  -v $(pwd):/documents \
+  asciidoctor/docker-asciidoctor \
+  /bin/bash -c "cd /documents && ./build.sh"
+----
+
+=== Manuelle einzelne Builds
+
+[source,bash]
+----
+# Deutsch Vollversion
+asciidoctor-pdf -a pdf-theme=jernoxit -a full-version cv-main.adoc -o output/cv_de.pdf
+
+# Englisch Kurzversion
+asciidoctor-pdf -a pdf-theme=jernoxit cv-main-en.adoc -o output/cv_en.pdf
+
+# Mit anderem Branding
+asciidoctor-pdf -a company-branding=client-name cv-main.adoc -o output/cv.pdf
+----
+
+== Verfügbare Tasks
+
+[source,bash]
+----
+task build       # Build all CV PDFs
+task release     # Create and push git tag for release
+task clean       # Clean output directory
+task list        # List all available tasks
+----
+
+== Best Practices
+
+**DO:**
+
+* ✓ Beide Sprachen pflegen (DE & EN)
+* ✓ `task build` vor Commits ausführen
+* ✓ `task release` für Versionierung nutzen
+* ✓ Company Branding per Attribut wechseln
+* ✓ Git für Versionsverwaltung nutzen
+
+**DON'T:**
+
+* ✗ Datum manuell in attributes.adoc ändern (wird automatisch gesetzt)
+* ✗ PDFs committen (werden automatisch gebaut)
+* ✗ `cv-main.adoc` für Inhalte ändern (nur Struktur)
+
+== Ressourcen
+
+* **AsciiDoc Syntax**: https://docs.asciidoctor.org/asciidoc/latest/
+* **PDF Theming**: https://docs.asciidoctor.org/pdf-converter/latest/theme/
+* **Task**: https://taskfile.dev
+* **GitHub Actions**: https://docs.github.com/actions
 
 == Kontakt
 
