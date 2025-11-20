@@ -32,11 +32,39 @@ jobs:
             asciidoctor/docker-asciidoctor \
             /bin/bash -c "cd /documents && chmod +x build.sh && ./build.sh"
 
-      - name: Upload CV artifacts
+      # Upload each PDF as a separate artifact for better visibility
+      # If a PDF doesn't exist, the step is automatically skipped
+
+      - name: Upload German Full Version
+        if: hashFiles('output/CV_Tobias_Breitwieser_Vollversion_DE.pdf') != ''
         uses: actions/upload-artifact@v4
         with:
-          name: cv-pdfs
-          path: output/*.pdf
+          name: CV_Tobias_Breitwieser_Vollversion_DE.pdf
+          path: output/CV_Tobias_Breitwieser_Vollversion_DE.pdf
+          retention-days: 90
+
+      - name: Upload German Short Version
+        if: hashFiles('output/CV_Tobias_Breitwieser_Kurzversion_DE.pdf') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV_Tobias_Breitwieser_Kurzversion_DE.pdf
+          path: output/CV_Tobias_Breitwieser_Kurzversion_DE.pdf
+          retention-days: 90
+
+      - name: Upload English Full Version
+        if: hashFiles('output/CV_Tobias_Breitwieser_Full_EN.pdf') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV_Tobias_Breitwieser_Full_EN.pdf
+          path: output/CV_Tobias_Breitwieser_Full_EN.pdf
+          retention-days: 90
+
+      - name: Upload English Short Version
+        if: hashFiles('output/CV_Tobias_Breitwieser_Short_EN.pdf') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV_Tobias_Breitwieser_Short_EN.pdf
+          path: output/CV_Tobias_Breitwieser_Short_EN.pdf
           retention-days: 90
 
       - name: Create Release
