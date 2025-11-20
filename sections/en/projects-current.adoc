@@ -44,7 +44,7 @@ Evaluation of migrating existing functionality from C to Rust on STM32 microcont
 
 '''
 
-=== 01/2021 - 06/2025 | Development of Observability Solutions in 5G Environment
+=== 01/2021 - 01/2025 | Development of Observability Solutions in 5G Environment
 
 *Role:* Software Developer/DevOps Engineer +
 *Client:* Siticom GmbH +
@@ -54,7 +54,7 @@ Development and integration of observability capabilities for various 5G hardwar
 
 *Technologies:* VMware, Rancher, Terraform, Golang, Kubernetes
 
-<<<
+'''
 
 === 01/2019 - 11/2023 | Platform for Voice Applications & Voice Assistants
 
