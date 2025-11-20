@@ -4,7 +4,7 @@
 
 image:https://github.com/tarfu/cv/actions/workflows/build-cv.yml/badge.svg[Build Status,link=https://github.com/tarfu/cv/actions/workflows/build-cv.yml]
 
-**📥 Aktuelle Versionen herunterladen:**
+== 📥 Aktuelle Versionen herunterladen
 
 * 🇩🇪 link:https://github.com/tarfu/cv/releases/latest/download/CV_Tobias_Breitwieser_Vollversion_DE.pdf[Vollversion (Deutsch)]
 * 🇬🇧 link:https://github.com/tarfu/cv/releases/latest/download/CV_Tobias_Breitwieser_Full_EN.pdf[Full Version (English)]
