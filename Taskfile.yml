@@ -3,12 +3,14 @@ version: '3'
 tasks:
   build:
     desc: Build all CV PDFs
+    silent: true
     cmds:
       - chmod +x build.sh
       - ./build.sh
 
   release:
     desc: Create and push git tag for release (Format v<yyyy>.<mm><dd> or custom TAG=v1.2.3)
+    silent: true
     vars:
       DATE_TAG:
         sh: date "+%Y.%m.%d"
@@ -52,11 +54,13 @@ tasks:
 
   clean:
     desc: Clean output directory
+    silent: true
     cmds:
       - rm -rf output/*.pdf
       - echo "✓ Output directory cleaned"
 
   list:
     desc: List all available tasks
+    silent: true
     cmds:
       - task --list
