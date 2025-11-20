@@ -1,0 +1,62 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build all CV PDFs
+    cmds:
+      - chmod +x build.sh
+      - ./build.sh
+
+  release:
+    desc: Create and push git tag for release (Format v<yyyy>.<mm><dd> or custom TAG=v1.2.3)
+    vars:
+      DATE_TAG:
+        sh: date "+%Y.%m.%d"
+      BASE_TAG: "v{{.DATE_TAG}}"
+    cmds:
+      - |
+        if [ -n "{{.TAG}}" ]; then
+          RELEASE_TAG="{{.TAG}}"
+          echo "Using custom tag: $RELEASE_TAG"
+        else
+          BASE="{{.BASE_TAG}}"
+
+          # Check if tag exists
+          if git rev-parse "$BASE" >/dev/null 2>&1; then
+            # Tag exists, find next available number
+            COUNTER=1
+            while git rev-parse "${BASE}-${COUNTER}" >/dev/null 2>&1; do
+              COUNTER=$((COUNTER + 1))
+            done
+            RELEASE_TAG="${BASE}-${COUNTER}"
+            echo "⚠️  Tag $BASE already exists, using: $RELEASE_TAG"
+          else
+            RELEASE_TAG="$BASE"
+            echo "✓ Using tag: $RELEASE_TAG"
+          fi
+        fi
+
+        # Create and push tag
+        echo ""
+        echo "📦 Creating tag: $RELEASE_TAG"
+        git tag "$RELEASE_TAG"
+
+        echo "🚀 Pushing tag to origin..."
+        git push origin "$RELEASE_TAG"
+
+        echo ""
+        echo "✅ Release $RELEASE_TAG created and pushed!"
+        echo ""
+        echo "GitHub Action is now building the release..."
+        echo "View at: https://github.com/tarfu/cv/releases/tag/$RELEASE_TAG"
+
+  clean:
+    desc: Clean output directory
+    cmds:
+      - rm -rf output/*.pdf
+      - echo "✓ Output directory cleaned"
+
+  list:
+    desc: List all available tasks
+    cmds:
+      - task --list
