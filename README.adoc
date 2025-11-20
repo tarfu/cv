@@ -2,9 +2,13 @@
 :toc:
 :toclevels: 3
 
+image:https://github.com/tarfu/cv/actions/workflows/build-cv.yml/badge.svg[Build Status,link=https://github.com/tarfu/cv/actions/workflows/build-cv.yml]
+
 == Überblick
 
 Dieses System verwaltet den Lebenslauf von Tobias Breitwieser mit AsciiDoc. Die Daten sind von der Gestaltung getrennt, sodass verschiedene PDF-Versionen aus den gleichen Quelldaten erzeugt werden können.
+
+Die CVs sind in **Deutsch** und **Englisch** verfügbar und werden automatisch bei jedem Push auf den main Branch über GitHub Actions gebaut.
 
 == Schnellstart
 
@@ -18,29 +22,52 @@ cd cv-system
 
 Die PDFs finden Sie dann im `output/` Verzeichnis:
 
-* `CV_Tobias_Breitwieser_Vollversion.pdf` - Vollständiger CV im jernoxIT-Design
-* `CV_Tobias_Breitwieser_Kurzversion.pdf` - Ohne ältere Projekte
-* `CV_Tobias_Breitwieser_Minimal.pdf` - Minimalistisches Design
+**Deutsche Versionen:**
+
+* `CV_Tobias_Breitwieser_Vollversion_DE.pdf` - Vollständiger CV im jernoxIT-Design
+* `CV_Tobias_Breitwieser_Kurzversion_DE.pdf` - Ohne ältere Projekte
+* `CV_Tobias_Breitwieser_Minimal_DE.pdf` - Minimalistisches Design
+
+**Englische Versionen:**
+
+* `CV_Tobias_Breitwieser_Full_EN.pdf` - Full CV with jernoxIT design
+* `CV_Tobias_Breitwieser_Short_EN.pdf` - Without archive projects
+* `CV_Tobias_Breitwieser_Minimal_EN.pdf` - Minimal design
 
 == Dateistruktur
 
 [source]
 ----
 cv-system/
-├── cv-main.adoc              # Hauptdatei (selten ändern)
-├── attributes.adoc           # Variablen (Datum, Rate, etc.)
+├── cv-main.adoc              # Hauptdatei (Deutsch)
+├── cv-main-en.adoc           # Hauptdatei (Englisch)
+├── attributes.adoc           # Variablen (Deutsch)
+├── attributes-en.adoc        # Variablen (Englisch)
 ├── sections/                 # Inhaltliche Sections
-│   ├── contact.adoc         # Kontaktdaten
-│   ├── skills.adoc          # Kompetenzen
-│   ├── profile.adoc         # Profil-Text
-│   ├── projects-current.adoc # Aktuelle Projekte
-│   ├── projects-archive.adoc # Ältere Projekte
-│   ├── competencies.adoc    # Kompetenz-Übersicht
-│   ├── education.adoc       # Ausbildung
-│   └── locations.adoc       # Einsatzorte
+│   ├── de/                  # Deutsche Sections
+│   │   ├── contact.adoc
+│   │   ├── skills.adoc
+│   │   ├── profile.adoc
+│   │   ├── projects-current.adoc
+│   │   ├── projects-archive.adoc
+│   │   ├── competencies.adoc
+│   │   ├── education.adoc
+│   │   └── locations.adoc
+│   └── en/                  # English Sections
+│       ├── contact.adoc
+│       ├── skills.adoc
+│       ├── profile.adoc
+│       ├── projects-current.adoc
+│       ├── projects-archive.adoc
+│       ├── competencies.adoc
+│       ├── education.adoc
+│       └── locations.adoc
 ├── themes/                   # Design-Themes
 │   ├── jernoxit-theme.yml   # jernoxIT Design
 │   └── minimal-theme.yml    # Minimal Design
+├── .github/
+│   └── workflows/
+│       └── build-cv.yml     # GitHub Actions Workflow
 ├── build.sh                  # Build-Script
 ├── output/                   # Generierte PDFs
 └── README.adoc              # Diese Datei
@@ -65,7 +92,10 @@ Nach dem Ändern: `./build.sh` ausführen
 
 === 2. Neues Projekt hinzufügen
 
-Datei: `sections/projects-current.adoc`
+**Wichtig**: Projekt in beiden Sprachen hinzufügen!
+
+* Deutsch: `sections/de/projects-current.adoc`
+* Englisch: `sections/en/projects-current.adoc`
 
 Template für ein neues Projekt:
 
@@ -97,8 +127,10 @@ welche Herausforderungen gab es?
 
 === 3. Projekt ins Archiv verschieben
 
-. Projekt aus `sections/projects-current.adoc` ausschneiden
-. In `sections/projects-archive.adoc` als Tabellenzeile einfügen:
+**Wichtig**: In beiden Sprachen durchführen!
+
+. Projekt aus `sections/de/projects-current.adoc` und `sections/en/projects-current.adoc` ausschneiden
+. In `sections/de/projects-archive.adoc` und `sections/en/projects-archive.adoc` als Tabellenzeile einfügen:
 
 [source,asciidoc]
 ----
@@ -110,7 +142,10 @@ welche Herausforderungen gab es?
 
 === 4. Kompetenzen aktualisieren
 
-Datei: `sections/skills.adoc`
+**Wichtig**: In beiden Sprachen aktualisieren!
+
+* Deutsch: `sections/de/skills.adoc`
+* Englisch: `sections/en/skills.adoc`
 
 Format:
 
@@ -279,35 +314,96 @@ Zitattext hier
 ____
 ----
 
+== GitHub Actions - Automatischer Build
+
+Das Repository nutzt GitHub Actions für automatisches Bauen der CV-PDFs. Der Workflow wird ausgelöst bei:
+
+* **Push auf main Branch**: Automatischer Build bei jeder Änderung
+* **Pull Requests**: Build-Preview für PRs
+* **Tags** (z.B. `v1.0.0`): Automatisches Release mit PDF-Assets
+* **Manueller Trigger**: Über GitHub UI → Actions → "Build CV PDFs" → "Run workflow"
+
+=== PDFs herunterladen
+
+**Workflow-Artefakte** (nach Push/PR):
+
+. Gehen Sie zu: https://github.com/tarfu/cv/actions
+. Klicken Sie auf den letzten erfolgreichen Workflow-Run
+. Unter "Artifacts" finden Sie `cv-pdfs` zum Download
+. Artefakte werden 90 Tage gespeichert
+
+**Release-Assets** (bei Tags):
+
+. Gehen Sie zu: https://github.com/tarfu/cv/releases
+. Wählen Sie das gewünschte Release (z.B. `v1.2.0`)
+. Alle 6 PDFs sind direkt downloadbar
+
+=== Release erstellen
+
+Um ein neues Release mit PDFs zu erstellen:
+
+[source,bash]
+----
+# Tag erstellen und pushen
+git tag v1.2.0
+git push origin v1.2.0
+----
+
+Die GitHub Action erstellt automatisch ein Release mit allen PDFs.
+
+=== Manuellen Build starten
+
+. Gehen Sie zu: https://github.com/tarfu/cv/actions/workflows/build-cv.yml
+. Klicken Sie auf "Run workflow"
+. Wählen Sie den Branch
+. Klicken Sie auf "Run workflow"
+
+Die PDFs sind nach ~2 Minuten als Artefakt verfügbar.
+
 == Erweiterte Nutzung
 
 === Verschiedene Versionen generieren
+
+**Deutsche Versionen:**
 
 Nur jernoxIT Vollversion:
 [source,bash]
 ----
 asciidoctor-pdf -a pdf-theme=jernoxit -a full-version \
-  cv-main.adoc -o output/vollversion.pdf
+  cv-main.adoc -o output/vollversion_de.pdf
 ----
 
 Nur jernoxIT Kurzversion:
 [source,bash]
 ----
 asciidoctor-pdf -a pdf-theme=jernoxit \
-  cv-main.adoc -o output/kurzversion.pdf
+  cv-main.adoc -o output/kurzversion_de.pdf
 ----
 
-Minimal Design:
+**Englische Versionen:**
+
+Nur jernoxIT Full Version:
 [source,bash]
 ----
-asciidoctor-pdf -a pdf-theme=minimal -a full-version \
-  cv-main.adoc -o output/minimal.pdf
+asciidoctor-pdf -a pdf-theme=jernoxit -a full-version \
+  cv-main-en.adoc -o output/full_en.pdf
 ----
 
-HTML Version (für Website):
+Nur jernoxIT Short Version:
 [source,bash]
 ----
-asciidoctor cv-main.adoc -o output/cv.html
+asciidoctor-pdf -a pdf-theme=jernoxit \
+  cv-main-en.adoc -o output/short_en.pdf
+----
+
+**HTML Versionen** (für Website):
+[source,bash]
+----
+# Deutsch
+asciidoctor cv-main.adoc -o output/cv_de.html
+
+# Englisch
+asciidoctor cv-main-en.adoc -o output/cv_en.html
 ----
 
 === Bedingte Inhalte
@@ -338,8 +434,10 @@ asciidoctor-pdf -a detailed cv-main.adoc -o output/detailed.pdf
 * **Regelmäßig committen**: Nutzen Sie Git für Versionsverwaltung
 * **Klein halten**: Kurze, prägnante Beschreibungen
 * **Konsistent formatieren**: Gleiche Struktur bei allen Projekten
-* **Variablen nutzen**: Datum, Rate etc. in `attributes.adoc`
+* **Variablen nutzen**: Datum, Rate etc. in `attributes.adoc` und `attributes-en.adoc`
+* **Beide Sprachen pflegen**: Änderungen immer in DE und EN durchführen
 * **Testen**: Nach Änderungen immer `./build.sh` ausführen
+* **GitHub Actions nutzen**: Automatischer Build bei Push auf main
 
 === DON'Ts ✗
 
