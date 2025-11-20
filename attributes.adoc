@@ -35,5 +35,6 @@
 :preferred-country: Deutschland
 :remote-work: möglich
 
-// Letzte Aktualisierung
-:last-updated: 20.11.2025
+// Letzte Aktualisierung (wird beim Build dynamisch gesetzt)
+// Dieser Wert dient nur als Fallback für manuelle Builds ohne build.sh
+:last-updated: wird beim Build gesetzt

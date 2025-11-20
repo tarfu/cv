@@ -35,8 +35,9 @@
 :preferred-country: Germany
 :remote-work: possible
 
-// Last Update
-:last-updated: November 20th, 2025
+// Last Update (dynamically set during build)
+// This value serves only as a fallback for manual builds without build.sh
+:last-updated: set during build
 
 // NOTE: To create an English CV:
 // 1. Copy this file to attributes-en.adoc
