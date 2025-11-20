@@ -1,0 +1,57 @@
+== Additional Projects (Selection)
+
+[cols="1,3,2,3",options="header"]
+|===
+|Year |Project |Role/Client |Technologies
+
+|2020
+|Code Review and QA for ISP Software
+|siticom GmbH
+|Java, Go, Python, Helm, Terraform
+
+|2019
+|Multi-Master Kubernetes Environment
+|Consulting
+|Kubernetes, POC
+
+|2018-19
+|AWS Cloud Concepts (Insurance)
+|IAM/Permissions
+|AWS, Terraform, CloudFormation
+
+|2018
+|Media DRM Processing
+|Microservices
+|Java, Docker, PostgreSQL, AWS
+
+|2017-18
+|Media System (eBook Delivery)
+|Cloud Platform
+|Docker Swarm, Java, Go, AWS
+
+|2016-17
+|Performance Analysis Platform (ISP)
+|Big Data
+|Go, Python, Elasticsearch, K8s
+
+|2016-17
+|CRM System Analysis (ISP)
+|Business Analyst
+|Oracle, Scrum, OAuth, SAML
+
+|2016
+|Deployment Pipeline (ISP)
+|Test Environments
+|OpenStack, Terraform, Go
+
+|2014-16
+|Microservices Architecture (Media)
+|AWS Cloud
+|Lambda, Docker, Java, Spring Boot
+
+|===
+
+[NOTE]
+====
+Detailed project descriptions available upon request.
+====

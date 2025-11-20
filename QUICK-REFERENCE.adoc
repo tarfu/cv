@@ -1,0 +1,94 @@
+= AsciiDoc Quick Reference für CV-Pflege
+
+== Häufigste Aufgaben
+
+=== Projekt hinzufügen (sections/projects-current.adoc)
+
+----
+=== MM/YYYY - MM/YYYY | Projekttitel
+
+*Rolle:* Cloud-Consultant +
+*Kunde:* Firmenname
+
+Beschreibung...
+
+*Technologien:* Tech1, Tech2, Tech3
+
+'''
+----
+
+=== Variablen ändern (attributes.adoc)
+
+----
+:hourly-rate: 130,0 EUR
+:availability-date: 01.03.2026
+----
+
+=== PDF erstellen
+
+----
+./build.sh
+----
+
+== Formatierung
+
+[cols="2,3"]
+|===
+|Syntax |Bedeutung
+
+|`*fett*` |Fettdruck
+|`_kursiv_` |Kursiv
+|`\`code`` |Code-Format
+|` +` |Zeilenumbruch
+|`'''` |Trennlinie
+|===
+
+== Überschriften
+
+----
+= Titel
+== Kapitel (wie "Projekte")
+=== Projekt (wie Projektname)
+==== Unterabschnitt
+----
+
+== Listen
+
+----
+* Punkt 1
+* Punkt 2
+
+1. Nummeriert
+2. Zweiter Punkt
+
+Begriff:: Definition
+----
+
+== Tabellen
+
+----
+[cols="1,3,2"]
+|===
+|Spalte 1 |Spalte 2 |Spalte 3
+|Wert A |Wert B |Wert C
+|===
+----
+
+== Hinweise
+
+----
+[NOTE]
+====
+Wichtiger Hinweis
+====
+----
+
+Typen: NOTE, TIP, IMPORTANT, WARNING
+
+== Links & Fußnoten
+
+----
+https://example.com[Linktext]
+
+Text mit Fußnote.footnote:[Fußnotentext]
+----

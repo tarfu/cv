@@ -1,0 +1,41 @@
+// CV Attributes - English Version
+// Template for creating an English CV
+
+// Personal Data
+:name: Tobias Breitwieser
+:job-title: Application Development, DevOps, and AI Integration
+:location: Weiterstadt, Germany
+:birth-year: 1989
+:nationality: German
+
+// Availability
+:availability-date: January 1st, 2026
+:availability-percent: 80%
+:onsite-percent: 10%
+
+// Financial
+:hourly-rate: 125,0 EUR
+:rate-note: Depending on project scope, location, and duration
+
+// Languages
+:languages: German (native), English (fluent)
+
+// Contact & Company
+:company: jernoxIT GmbH
+:company-address: Georgenstr. 32a, 64331 Weiterstadt, Germany
+:email: contact@jernoxit.de
+:website: www.jernoxit.de
+
+// Locations
+:preferred-location: Darmstadt area (+200km)
+:preferred-country: Germany
+:remote-work: possible
+
+// Last Update
+:last-updated: November 20th, 2025
+
+// NOTE: To create an English CV:
+// 1. Copy this file to attributes-en.adoc
+// 2. Create cv-main-en.adoc based on cv-main.adoc
+// 3. Translate all section files in sections/
+// 4. Build with: asciidoctor-pdf -a pdf-theme=jernoxit cv-main-en.adoc -o output/CV_EN.pdf

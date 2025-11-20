@@ -1,0 +1,14 @@
+// Kontaktdaten und Verfügbarkeit
+
+[.contact-info]
+****
+[cols="1,1"]
+|===
+|Freiberufler / Selbstständiger |Verfügbar ab: {availability-date}
+|Verfügbarkeit: {availability-percent} |davon vor Ort: {onsite-percent}
+|Wohnort: {location} |Jahrgang: {birth-year}
+|Stundensatz: {hourly-rate} |Sprachen: {languages}
+|===
+
+_{rate-note}_
+****

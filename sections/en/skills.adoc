@@ -1,0 +1,13 @@
+== Core Competencies
+
+**Programming Languages**:: Go, Rust, Java, Kotlin, Python, TypeScript, C/C++
+
+**Cloud & Infrastructure**:: Azure, Kubernetes, Terraform, Helm, Docker, Azure VWAN
+
+**Frameworks & Tools**:: Spring Framework, GitLab CI/CD, MCP (Model Context Protocol)
+
+**Networking & Communication**:: IP Networking, GRPC, HTTP/2, Kafka, MPLS, REST
+
+**Databases**:: PostgreSQL, Redis, MongoDB, Cassandra, Ceph, Oracle, MySQL
+
+**Methodologies**:: Scrum, SAFe, DevOps, Site Reliability Engineering, Microservices

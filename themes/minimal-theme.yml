@@ -1,0 +1,64 @@
+extends: default
+
+# Minimalistisches Theme - Clean und Professional
+
+brand:
+  dark: '2c3e50'
+  medium: '7f8c8d'
+  light: 'ecf0f1'
+
+page:
+  background_color: ffffff
+  layout: portrait
+  margin: [2cm, 2cm, 2.5cm, 2cm]
+  size: A4
+
+base:
+  font_color: $brand_dark
+  font_family: Helvetica
+  font_size: 10
+  line_height_length: 12
+  line_height: $base_line_height_length / $base_font_size
+  
+heading:
+  font_color: $brand_dark
+  font_family: Helvetica
+  font_style: bold
+  line_height: 1.2
+  margin_top: 18
+  margin_bottom: 10
+  h1_font_size: 22
+  h2_font_size: 13
+  h3_font_size: 11
+  
+footer:
+  height: 1cm
+  line_height: 1
+  font_size: 8
+  font_color: $brand_medium
+  border_color: $brand_medium
+  border_width: 0.5
+  padding: [6, 0, 0, 0]
+  recto:
+    left:
+      content: 'Tobias Breitwieser'
+    right:
+      content: '{page-number} / {page-count}'
+  verso:
+    left:
+      content: $footer_recto_left_content
+    right:
+      content: $footer_recto_right_content
+
+table:
+  background_color: $brand_light
+  head:
+    font_style: bold
+    background_color: $brand_medium
+    font_color: ffffff
+  body:
+    stripe_background_color: fafafa
+  cell:
+    padding: 5
+  border_color: ffffff
+  border_width: 0.5

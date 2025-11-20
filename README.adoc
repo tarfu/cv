@@ -1,0 +1,399 @@
+= CV Management System - Anleitung
+:toc:
+:toclevels: 3
+
+== Überblick
+
+Dieses System verwaltet den Lebenslauf von Tobias Breitwieser mit AsciiDoc. Die Daten sind von der Gestaltung getrennt, sodass verschiedene PDF-Versionen aus den gleichen Quelldaten erzeugt werden können.
+
+== Schnellstart
+
+=== PDF generieren
+
+[source,bash]
+----
+cd cv-system
+./build.sh
+----
+
+Die PDFs finden Sie dann im `output/` Verzeichnis:
+
+* `CV_Tobias_Breitwieser_Vollversion.pdf` - Vollständiger CV im jernoxIT-Design
+* `CV_Tobias_Breitwieser_Kurzversion.pdf` - Ohne ältere Projekte
+* `CV_Tobias_Breitwieser_Minimal.pdf` - Minimalistisches Design
+
+== Dateistruktur
+
+[source]
+----
+cv-system/
+├── cv-main.adoc              # Hauptdatei (selten ändern)
+├── attributes.adoc           # Variablen (Datum, Rate, etc.)
+├── sections/                 # Inhaltliche Sections
+│   ├── contact.adoc         # Kontaktdaten
+│   ├── skills.adoc          # Kompetenzen
+│   ├── profile.adoc         # Profil-Text
+│   ├── projects-current.adoc # Aktuelle Projekte
+│   ├── projects-archive.adoc # Ältere Projekte
+│   ├── competencies.adoc    # Kompetenz-Übersicht
+│   ├── education.adoc       # Ausbildung
+│   └── locations.adoc       # Einsatzorte
+├── themes/                   # Design-Themes
+│   ├── jernoxit-theme.yml   # jernoxIT Design
+│   └── minimal-theme.yml    # Minimal Design
+├── build.sh                  # Build-Script
+├── output/                   # Generierte PDFs
+└── README.adoc              # Diese Datei
+----
+
+== Häufige Aufgaben
+
+=== 1. Variablen ändern (Rate, Datum, etc.)
+
+Datei: `attributes.adoc`
+
+Beispiele:
+
+[source,asciidoc]
+----
+:hourly-rate: 130,0 EUR          // Stundensatz anpassen
+:availability-date: 15.02.2026   // Verfügbarkeitsdatum ändern
+:availability-percent: 90%       // Verfügbarkeit in Prozent
+----
+
+Nach dem Ändern: `./build.sh` ausführen
+
+=== 2. Neues Projekt hinzufügen
+
+Datei: `sections/projects-current.adoc`
+
+Template für ein neues Projekt:
+
+[source,asciidoc]
+----
+=== MM/YYYY - MM/YYYY | Projekttitel
+
+*Rolle:* Ihre Rolle +
+*Kunde:* Kundenname
+
+Beschreibung des Projekts. Was wurde gemacht, was war das Ziel,
+welche Herausforderungen gab es?
+
+*Aufgaben:* (optional)
+
+* Aufzählung von Haupttätigkeiten
+* Weitere wichtige Aufgaben
+* Besondere Achievements
+
+*Technologien:* Tech1, Tech2, Tech3, Tech4
+
+'''
+----
+
+[TIP]
+====
+`'''` erzeugt eine horizontale Trennlinie zwischen Projekten.
+====
+
+=== 3. Projekt ins Archiv verschieben
+
+. Projekt aus `sections/projects-current.adoc` ausschneiden
+. In `sections/projects-archive.adoc` als Tabellenzeile einfügen:
+
+[source,asciidoc]
+----
+|2025
+|Projekttitel (kurz)
+|Kunde/Rolle
+|Technologien (kurz)
+----
+
+=== 4. Kompetenzen aktualisieren
+
+Datei: `sections/skills.adoc`
+
+Format:
+
+[source,asciidoc]
+----
+**Kategorie**:: Wert1, Wert2, Wert3
+----
+
+Beispiel:
+
+[source,asciidoc]
+----
+**Programmiersprachen**:: Go, Rust, Java, Kotlin, Python, TypeScript
+----
+
+== AsciiDoc Cheatsheet
+
+=== Grundlegende Formatierung
+
+[cols="2,3,3"]
+|===
+|Element |AsciiDoc |Ergebnis
+
+|Fett
+|`\*fett*`
+|*fett*
+
+|Kursiv
+|`\_kursiv_`
+|_kursiv_
+
+|Code
+|`\`code``
+|`code`
+
+|Zeilenumbruch
+|` +` am Zeilenende
+|Neue Zeile
+
+|Horizontale Linie
+|`'''`
+|---
+
+|===
+
+=== Überschriften
+
+[source,asciidoc]
+----
+= Titel (Level 0)
+== Überschrift Level 1
+=== Überschrift Level 2
+==== Überschrift Level 3
+----
+
+=== Listen
+
+[source,asciidoc]
+----
+// Normale Liste
+* Punkt 1
+* Punkt 2
+** Unterpunkt
+* Punkt 3
+
+// Nummerierte Liste
+. Erster
+. Zweiter
+. Dritter
+
+// Definition Liste
+Begriff:: Definition des Begriffs
+Anderer Begriff:: Andere Definition
+----
+
+=== Tabellen
+
+[source,asciidoc]
+----
+[cols="1,3,2"]
+|===
+|Spalte 1 |Spalte 2 |Spalte 3
+
+|Wert A
+|Wert B
+|Wert C
+
+|Wert D
+|Wert E
+|Wert F
+|===
+----
+
+Mit Header:
+
+[source,asciidoc]
+----
+[cols="1,3,2",options="header"]
+|===
+|Header 1 |Header 2 |Header 3
+
+|Daten
+|Mehr Daten
+|Noch mehr
+|===
+----
+
+=== Admonitions (Hinweise)
+
+[source,asciidoc]
+----
+[NOTE]
+====
+Dies ist ein Hinweis.
+====
+
+[TIP]
+====
+Dies ist ein Tipp.
+====
+
+[IMPORTANT]
+====
+Dies ist wichtig.
+====
+
+[WARNING]
+====
+Dies ist eine Warnung.
+====
+----
+
+=== Links und Fußnoten
+
+[source,asciidoc]
+----
+// Link
+https://www.jernoxit.de[jernoxIT Website]
+
+// Fußnote
+Text mit Fußnote.footnote:[Dies ist die Fußnote]
+
+// Nummerierte Fußnote
+Text^1^
+
+Später:
+^1^ Dies ist die Erklärung
+----
+
+=== Sonderformatierung
+
+[source,asciidoc]
+----
+// Seitenumbruch
+<<<
+
+// Box/Sidebar
+****
+Inhalt in einer Box
+****
+
+// Zitat
+[quote, Autor]
+____
+Zitattext hier
+____
+----
+
+== Erweiterte Nutzung
+
+=== Verschiedene Versionen generieren
+
+Nur jernoxIT Vollversion:
+[source,bash]
+----
+asciidoctor-pdf -a pdf-theme=jernoxit -a full-version \
+  cv-main.adoc -o output/vollversion.pdf
+----
+
+Nur jernoxIT Kurzversion:
+[source,bash]
+----
+asciidoctor-pdf -a pdf-theme=jernoxit \
+  cv-main.adoc -o output/kurzversion.pdf
+----
+
+Minimal Design:
+[source,bash]
+----
+asciidoctor-pdf -a pdf-theme=minimal -a full-version \
+  cv-main.adoc -o output/minimal.pdf
+----
+
+HTML Version (für Website):
+[source,bash]
+----
+asciidoctor cv-main.adoc -o output/cv.html
+----
+
+=== Bedingte Inhalte
+
+In den Section-Dateien können Sie bedingte Inhalte nutzen:
+
+[source,asciidoc]
+----
+ifdef::detailed[]
+Dies erscheint nur bei detaillierter Version
+endif::[]
+
+ifndef::detailed[]
+Dies erscheint nur bei Kurzversion
+endif::[]
+----
+
+Dann beim Build:
+[source,bash]
+----
+asciidoctor-pdf -a detailed cv-main.adoc -o output/detailed.pdf
+----
+
+== Tipps für die Pflege
+
+=== DO's ✓
+
+* **Regelmäßig committen**: Nutzen Sie Git für Versionsverwaltung
+* **Klein halten**: Kurze, prägnante Beschreibungen
+* **Konsistent formatieren**: Gleiche Struktur bei allen Projekten
+* **Variablen nutzen**: Datum, Rate etc. in `attributes.adoc`
+* **Testen**: Nach Änderungen immer `./build.sh` ausführen
+
+=== DON'Ts ✗
+
+* **Keine manuellen Zeilenumbrüche**: AsciiDoc macht das automatisch
+* **Keine HTML-Tags**: Nutzen Sie AsciiDoc-Syntax
+* **Kein Copy-Paste aus Word**: Formatierung kann kaputt gehen
+* **Nicht cv-main.adoc ändern**: Nur für Struktur-Änderungen
+
+== Troubleshooting
+
+=== PDF wird nicht generiert
+
+Prüfen Sie:
+
+. Ist asciidoctor-pdf installiert?
++
+[source,bash]
+----
+gem install asciidoctor-pdf
+----
+
+. Gibt es Syntax-Fehler?
++
+[source,bash]
+----
+asciidoctor-pdf cv-main.adoc
+----
++
+Fehler werden angezeigt
+
+. Alle Dateien vorhanden?
++
+Prüfen Sie ob alle `include::` Dateien existieren
+
+=== Formatierung sieht komisch aus
+
+* Prüfen Sie Tabellen-Syntax (oft Fehlerquelle)
+* Kontrollieren Sie ob Admonition-Blöcke geschlossen sind (`====`)
+* Achten Sie auf korrekte Anzahl von `=` bei Überschriften
+
+=== Theme wird nicht angewendet
+
+[source,bash]
+----
+# Prüfen Sie den Theme-Pfad
+asciidoctor-pdf -a pdf-theme=jernoxit -a pdf-themesdir=themes cv-main.adoc
+----
+
+== Weitere Ressourcen
+
+* AsciiDoc Syntax: https://docs.asciidoctor.org/asciidoc/latest/
+* PDF Theming: https://docs.asciidoctor.org/pdf-converter/latest/theme/
+* AsciiDoc Writer's Guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+
+== Kontakt
+
+Bei Fragen zum System: Tobias Breitwieser kontaktieren

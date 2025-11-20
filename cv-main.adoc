@@ -1,0 +1,68 @@
+// Attributes zuerst laden!
+include::attributes.adoc[]
+
+= CV Tobias Breitwieser
+:doctype: article
+:pdf-theme: jernoxit
+:pdf-themesdir: themes
+:notitle:
+:sectnums!:
+:icons: font
+:source-highlighter: rouge
+
+// Header mit Name, Titel und Foto
+[cols="3,1",frame=none,grid=none]
+|===
+a|
+[.name]
+*Tobias Breitwieser*
+
+[.title]
+Application Development, DevOps, and AI Integration
+
+Aktualisiert am {last-updated}
+
+a|
+image::photo.jpg[width=120,align=right]
+|===
+
+// Kontaktdaten
+include::sections/de/contact.adoc[]
+
+// Profil
+include::sections/de/profile.adoc[]
+
+// Kompetenzen
+include::sections/de/skills.adoc[]
+
+// Aktuelle Projekte
+include::sections/de/projects-current.adoc[]
+
+// Ältere Projekte (optional mit ifdef)
+ifdef::full-version[]
+include::sections/de/projects-archive.adoc[]
+endif::[]
+
+ifndef::full-version[]
+[NOTE]
+====
+Weitere Projekte aus 2014-2020 auf Anfrage verfügbar.
+====
+endif::[]
+
+// Kompetenzen-Übersicht
+include::sections/de/competencies.adoc[]
+
+// Ausbildung
+include::sections/de/education.adoc[]
+
+// Einsatzorte
+include::sections/de/locations.adoc[]
+
+// Footer
+[.footer]
+****
+_{company}_ +
+{company-address} +
+{email} • {website}
+****

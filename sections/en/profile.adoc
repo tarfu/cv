@@ -1,0 +1,3 @@
+== Profile
+
+Experienced software developer and cloud architect with over 10 years of expertise in developing scalable systems, DevOps practices, and cloud infrastructures. Specialized in modern technologies such as Kubernetes, Azure, and microservice architectures. Extensive experience in consulting, architecture, and implementation of complex IT solutions for telecommunications, automotive, and retail sectors.

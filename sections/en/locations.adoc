@@ -1,0 +1,10 @@
+== Work Locations
+
+[cols="2,5"]
+|===
+|Preferred Regions |{preferred-location}, {preferred-country}
+|Remote Work |{remote-work}
+|On-Site Work |{onsite-percent} of availability
+|===
+
+I prefer to be contacted for projects in these work locations.

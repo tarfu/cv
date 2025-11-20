@@ -1,0 +1,8 @@
+== Competencies Overview
+
+[cols="2,5"]
+|===
+|Design/Architecture |Distributed Systems, Microservices, Model Context Protocol
+|Data Communication |GRPC, HTTP/2, MPLS, REST, Kafka, Message-Based Architecture
+|Industries |Telecommunications, Automotive, Retail, Insurance, Media, ISP
+|===

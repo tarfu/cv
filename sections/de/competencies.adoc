@@ -1,0 +1,8 @@
+== Kompetenzen im Überblick
+
+[cols="2,5"]
+|===
+|Design/Architektur |Distributed Systems, Microservices, Model Context Protocol
+|Datenkommunikation |GRPC, HTTP/2, MPLS, REST, Kafka, Message-Based Architecture
+|Branchen |Telekommunikation, Automotive, Einzelhandel, Versicherungen, Medien, ISP
+|===

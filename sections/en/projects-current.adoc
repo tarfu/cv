@@ -1,0 +1,76 @@
+== Professional Experience & Projects
+
+=== 10/2025 - 12/2025 | Evaluation of Firewall Deployment and Management in Azure
+
+*Role:* Cloud Consultant +
+*Client:* QAWare GmbH
+
+Evaluation and optimization of Azure Firewall deployment and management for hub-and-spoke architecture. Development of software for detecting duplicates in rules, consolidation, optimization, and removal of redundant rules.
+
+*Technologies:* Azure, Neo4j, Python, GitLab
+
+'''
+
+=== 10/2024 - 12/2025 | Architecture and Software Support - Cloud Platform
+
+*Role:* Architect, Software Consultant +
+*Client:* Large Discount Retailer (via QAWare GmbH)
+
+Modernization and scaling of an existing hub-and-spoke architecture in Azure that had reached its limits. Planning of new architecture and support during implementation. Implementation of deployment via GitLab CI and a Python-based orchestrator.
+
+*Technologies:* Azure, Terraform, GitLab, Python, Azure VWAN
+
+'''
+
+=== 07/2025 - 09/2025 | Integration of Proprietary Data into AI Systems
+
+*Role:* Software Developer +
+*Client:* Large Telecommunications Company
+
+Integration of data from proprietary data lake via MCP (Model Context Protocol) to multiple AI systems (ChatGPT, Claude.ai). Focus on access management and restriction of retrievable data at system and user level.
+
+*Technologies:* Rust, ChatGPT, Claude.ai, Anthropic AI, MCP, GitHub
+
+'''
+
+=== 01/2025 - 06/2025 | Feasibility Study for Embedded Rust
+
+*Role:* Architect/Consultant +
+*Client:* Automotive Sector
+
+Evaluation of migrating existing functionality from C to Rust on STM32 microcontrollers. Using Embassy Framework (async runtime for embedded). Implementation of a prototype and hardware-in-the-loop test pipeline in GitLab.
+
+*Technologies:* Rust, GitLab, Python, C, Embassy Framework, STM32
+
+'''
+
+=== 01/2021 - 06/2025 | Development of Observability Solutions in 5G Environment
+
+*Role:* Software Developer/DevOps Engineer +
+*Client:* Siticom GmbH +
+*Location:* Weiterstadt/Remote
+
+Development and integration of observability capabilities for various 5G hardware and software (Cablefree, Airspan, Amarisoft).footnote:[Monitoring and management of 5G infrastructures with focus on high availability] Monitoring and management of 5G infrastructures.
+
+*Technologies:* VMware, Rancher, Terraform, Golang, Kubernetes
+
+<<<
+
+=== 01/2019 - 11/2023 | Platform for Voice Applications & Voice Assistants
+
+*Role:* Site Reliability Engineer, Developer, DevOps +
+*Client:* QAWare +
+*Location:* Darmstadt/Mainz
+
+Development and operation of an Azure platform for voice-specific applications with high end-user numbers. Execution of a cloud provider migration during the project runtime.
+
+*Responsibilities:*
+
+* Development of automation for Kubernetes cluster operations and operational consulting
+* Deployment of a gateway for authentication and rate limiting (Spring Cloud Gateway, Kotlin)
+* Development and introduction of centralized logging (Humio, fluent-bit, Elasticsearch)
+* Automation of Azure resources with Terraform and secret management in Kubernetes
+* Network troubleshooting in the interaction of Azure, Kubernetes, and applications
+* Provision of CI infrastructure and blueprints for teams
+
+*Technologies:* Kotlin, Java 11, Kubernetes, Azure, Spring Framework, Terraform, Spring Cloud Gateway, SAFe, GitLab CI, Kubernetes Networking, Helm, Python

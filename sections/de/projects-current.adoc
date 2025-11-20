@@ -1,0 +1,76 @@
+== Berufserfahrung & Projekte
+
+=== 10/2025 - 12/2025 | Evaluation des Firewall Deployment und Management in Azure
+
+*Rolle:* Cloud-Consultant +
+*Kunde:* QAWare GmbH
+
+Evaluation und Optimierung des Deployments und Managements von Azure Firewalls für Hub-and-Spoke-Architektur. Entwicklung von Software zur Erkennung von Duplikaten in Regeln, Zusammenfassung, Optimierung und Entfernung überflüssiger Regeln.
+
+*Technologien:* Azure, Neo4j, Python, GitLab
+
+'''
+
+=== 10/2024 - 12/2025 | Architektur und Software-Unterstützung - Cloud Plattform
+
+*Rolle:* Architekt, Software-Consultant +
+*Kunde:* Großer Discounter (QAWare GmbH)
+
+Modernisierung und Skalierung einer bestehenden Hub-and-Spoke-Architektur in Azure, die an ihre Grenzen kam. Planung neuer Architektur und Unterstützung bei der Umsetzung. Implementierung des Deployments über GitLab-CI und eines in Python implementierten Orchestrators.
+
+*Technologien:* Azure, Terraform, GitLab, Python, Azure VWAN
+
+'''
+
+=== 07/2025 - 09/2025 | Integration eigener Daten in AI-Systeme
+
+*Rolle:* Software-Entwickler +
+*Kunde:* Großes Telekommunikationsunternehmen
+
+Anbindung von Daten aus eigenem Datenlake via MCP (Model Context Protocol) an mehrere AI-Systeme (ChatGPT, Claude.ai). Fokus auf Rechteverwaltung und Beschränkung abrufbarer Daten auf System- und Nutzerebene.
+
+*Technologien:* Rust, ChatGPT, Claude.ai, Anthropic AI, MCP, GitHub
+
+'''
+
+=== 01/2025 - 06/2025 | Machbarkeitsstudie für Embedded Rust
+
+*Rolle:* Architekt/Consultant +
+*Kunde:* Automobilsektor
+
+Evaluation der Migration bestehender Funktionalität von C nach Rust auf STM32 Mikrocontroller. Verwendung von Embassy Framework (Async-Runtime für Embedded). Implementierung eines Prototyps und Hardware-in-the-Loop-Testpipeline in GitLab.
+
+*Technologien:* Rust, GitLab, Python, C, Embassy Framework, STM32
+
+'''
+
+=== 01/2021 - 06/2025 | Entwicklung von Observability-Lösungen im 5G-Umfeld
+
+*Rolle:* Software-Entwickler/DevOps-Engineer +
+*Kunde:* Siticom GmbH +
+*Einsatzort:* Weiterstadt/Remote
+
+Entwicklung und Integration von Observability-Möglichkeiten für verschiedene 5G Hard- und Software (Cablefree, Airspan, Amarisoft).footnote:[Monitoring und Management von 5G-Infrastrukturen mit Fokus auf Hochverfügbarkeit] Monitoring und Management von 5G-Infrastrukturen.
+
+*Technologien:* VMware, Rancher, Terraform, Golang, Kubernetes
+
+<<<
+
+=== 01/2019 - 11/2023 | Plattform für Voice-Anwendungen & Sprachassistenten
+
+*Rolle:* Site Reliability Engineer, Entwickler, DevOps +
+*Kunde:* QAWare +
+*Einsatzort:* Darmstadt/Mainz
+
+Entwicklung und Betrieb einer Azure-Plattform für Voice-spezifische Anwendungen mit hoher Endbenutzerzahl. Durchführung einer Cloud-Anbieter-Migration während der Projektlaufzeit.
+
+*Aufgaben:*
+
+* Entwicklung von Automatisierung für Kubernetes-Cluster-Betrieb und betriebliche Beratung
+* Bereitstellung eines Gateways für Authentifikation und Rate Limiting (Spring Cloud Gateway, Kotlin)
+* Entwicklung und Einführung von zentralisiertem Logging (Humio, fluent-bit, Elasticsearch)
+* Automatisierung von Azure-Ressourcen mit Terraform und Secret-Management in Kubernetes
+* Netzwerk-Problemlösung im Zusammenspiel von Azure, Kubernetes und Applikationen
+* Bereitstellung von CI-Infrastruktur und Blueprints für Teams
+
+*Technologien:* Kotlin, Java 11, Kubernetes, Azure, Spring Framework, Terraform, Spring Cloud Gateway, SAFe, GitLab CI, Kubernetes Networking, Helm, Python

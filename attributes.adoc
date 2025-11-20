@@ -1,0 +1,35 @@
+// CV Attributes - Diese Datei enthält alle Variablen
+// Ihre Assistenz kann diese Werte einfach anpassen
+
+// Persönliche Daten
+:name: Tobias Breitwieser
+:job-title: Application Development, DevOps, and AI Integration
+:location: Weiterstadt
+:birth-year: 1989
+:nationality: deutsch
+
+// Verfügbarkeit
+:availability-date: 01.01.2026
+:availability-percent: 80%
+:onsite-percent: 10%
+
+// Finanzielles
+:hourly-rate: 125,0 EUR
+:rate-note: Je nach Beschäftigungsfeld, Einsatzort, und Länge des Auftrags
+
+// Sprachen
+:languages: Deutsch, Englisch
+
+// Kontakt & Firma
+:company: jernoxIT GmbH
+:company-address: Georgenstr. 32a, 64331 Weiterstadt
+:email: contact@jernoxit.de
+:website: www.jernoxit.de
+
+// Einsatzorte
+:preferred-location: Darmstadt (+200km)
+:preferred-country: Deutschland
+:remote-work: möglich
+
+// Letzte Aktualisierung
+:last-updated: 20.11.2025

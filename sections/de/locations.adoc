@@ -1,0 +1,10 @@
+== Einsatzorte
+
+[cols="2,5"]
+|===
+|Bevorzugte Regionen |{preferred-location}, {preferred-country}
+|Remote-Arbeit |{remote-work}
+|Vor-Ort-Einsatz |{onsite-percent} der Verfügbarkeit
+|===
+
+Ich möchte bevorzugt für Projekte in diesen Einsatzorten kontaktiert werden.
