@@ -1,3 +1,3 @@
 == Profil
 
-Erfahrener Softwareentwickler und Cloud-Architekt mit über 10 Jahren Expertise in der Entwicklung skalierbarer Systeme, DevOps-Praktiken und Cloud-Infrastrukturen. Spezialisiert auf moderne Technologien wie Kubernetes, Azure, und Microservice-Architekturen. Umfassende Erfahrung in der Beratung, Architektur und Implementierung komplexer IT-Lösungen für Telekommunikation, Automotive und Einzelhandel.
+Erfahrener Softwareentwickler und Cloud-Architekt mit über 10 Jahren Expertise in der Entwicklung skalierbarer Systeme, DevOps-Praktiken und Cloud-Infrastruktur. Spezialisiert auf moderne Technologien wie Kubernetes, Azure, und Microservice-Architekturen. Umfassende Erfahrung in der Beratung, Architektur und Implementierung komplexer IT-Lösungen für Telekommunikation, Automotive und Einzelhandel.

@@ -18,7 +18,7 @@
 :onsite-percent: 10%
 
 // Financial
-:hourly-rate: 125,0 EUR
+:hourly-rate: EUR 125.00
 :rate-note: Depending on project scope, location, and duration
 
 // Languages

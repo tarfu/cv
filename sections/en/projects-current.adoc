@@ -27,7 +27,7 @@ Modernization and scaling of an existing hub-and-spoke architecture in Azure tha
 *Role:* Software Developer +
 *Client:* Large Telecommunications Company
 
-Integration of data from proprietary data lake via MCP (Model Context Protocol) to multiple AI systems (ChatGPT, Claude.ai). Focus on access management and restriction of retrievable data at system and user level.
+Integration of data from the proprietary data lake via MCP (Model Context Protocol) into multiple AI systems (ChatGPT, Claude.ai). Focus on access management and restriction of retrievable data at system and user level.
 
 *Technologies:* Rust, ChatGPT, Claude.ai, Anthropic AI, MCP, GitHub
 
@@ -38,7 +38,7 @@ Integration of data from proprietary data lake via MCP (Model Context Protocol) 
 *Role:* Architect/Consultant +
 *Client:* Automotive Sector
 
-Evaluation of migrating existing functionality from C to Rust on STM32 microcontrollers. Using Embassy Framework (async runtime for embedded). Implementation of a prototype and hardware-in-the-loop test pipeline in GitLab.
+Evaluation of migrating existing functionality from C to Rust on STM32 microcontrollers. Using the Embassy Framework (async runtime for embedded). Implementation of a prototype and hardware-in-the-loop test pipeline in GitLab.
 
 *Technologies:* Rust, GitLab, Python, C, Embassy Framework, STM32
 
@@ -62,15 +62,15 @@ Development and integration of observability capabilities for various 5G hardwar
 *Client:* QAWare +
 *Location:* Darmstadt/Mainz
 
-Development and operation of an Azure platform for voice-specific applications with high end-user numbers. Execution of a cloud provider migration during the project runtime.
+Development and operation of an Azure platform for voice-specific applications serving a large number of end users. Performed a cloud provider migration during the project runtime.
 
 *Responsibilities:*
 
-* Development of automation for Kubernetes cluster operations and operational consulting
-* Deployment of a gateway for authentication and rate limiting (Spring Cloud Gateway, Kotlin)
-* Development and introduction of centralized logging (Humio, fluent-bit, Elasticsearch)
-* Automation of Azure resources with Terraform and secret management in Kubernetes
-* Network troubleshooting in the interaction of Azure, Kubernetes, and applications
-* Provision of CI infrastructure and blueprints for teams
+* Developed automation for Kubernetes cluster operations and operational consulting
+* Deployed a gateway for authentication and rate limiting (Spring Cloud Gateway, Kotlin)
+* Developed and introduced centralized logging (Humio, fluent-bit, Elasticsearch)
+* Automated Azure resources with Terraform and secret management in Kubernetes
+* Resolved network issues in the interaction between Azure, Kubernetes, and applications
+* Provided CI infrastructure and blueprints for teams
 
 *Technologies:* Kotlin, Java 11, Kubernetes, Azure, Spring Framework, Terraform, Spring Cloud Gateway, SAFe, GitLab CI, Kubernetes Networking, Helm, Python

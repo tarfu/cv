@@ -27,7 +27,7 @@ Modernisierung und Skalierung einer bestehenden Hub-and-Spoke-Architektur in Azu
 *Rolle:* Software-Entwickler +
 *Kunde:* Großes Telekommunikationsunternehmen
 
-Anbindung von Daten aus eigenem Datenlake via MCP (Model Context Protocol) an mehrere AI-Systeme (ChatGPT, Claude.ai). Fokus auf Rechteverwaltung und Beschränkung abrufbarer Daten auf System- und Nutzerebene.
+Anbindung von Daten aus dem eigenem Datenlake via MCP (Model Context Protocol) an mehrere AI-Systeme (ChatGPT, Claude.ai). Fokus auf Rechteverwaltung und die Beschränkung abrufbarer Daten auf System- und Nutzerebene.
 
 *Technologien:* Rust, ChatGPT, Claude.ai, Anthropic AI, MCP, GitHub
 
@@ -70,7 +70,7 @@ Entwicklung und Betrieb einer Azure-Plattform für Voice-spezifische Anwendungen
 * Bereitstellung eines Gateways für Authentifikation und Rate Limiting (Spring Cloud Gateway, Kotlin)
 * Entwicklung und Einführung von zentralisiertem Logging (Humio, fluent-bit, Elasticsearch)
 * Automatisierung von Azure-Ressourcen mit Terraform und Secret-Management in Kubernetes
-* Netzwerk-Problemlösung im Zusammenspiel von Azure, Kubernetes und Applikationen
+* Lösung von Netzwerkproblemen im Zusammenspiel von Azure, Kubernetes und Applikationen
 * Bereitstellung von CI-Infrastruktur und Blueprints für Teams
 
 *Technologien:* Kotlin, Java 11, Kubernetes, Azure, Spring Framework, Terraform, Spring Cloud Gateway, SAFe, GitLab CI, Kubernetes Networking, Helm, Python
