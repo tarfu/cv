@@ -5,9 +5,12 @@
 [cols="1,1"]
 |===
 |Freelancer / Self-Employed |Available from: {availability-date}
-|Availability: {availability-percent} |On-site: {onsite-percent}
+// |Availability: {availability-percent} |On-site: {onsite-percent}
+|Availability: {availability-percent} |
 |Location: {location} |Year of birth: {birth-year}
-|Hourly rate: {hourly-rate} |Languages: {languages}
+// |Hourly rate: {hourly-rate} |Languages: {languages}
+| |Languages: {languages}
+
 |===
 
 _{rate-note}_

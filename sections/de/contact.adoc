@@ -5,9 +5,12 @@
 [cols="1,1"]
 |===
 |Freiberufler / Selbstständiger |Verfügbar ab: {availability-date}
-|Verfügbarkeit: {availability-percent} |davon vor Ort: {onsite-percent}
+|Verfügbarkeit: {availability-percent} |
+//|Verfügbarkeit: {availability-percent} |davon vor Ort: {onsite-percent}
 |Wohnort: {location} |Jahrgang: {birth-year}
-|Stundensatz: {hourly-rate} |Sprachen: {languages}
+// |Stundensatz: {hourly-rate} |Sprachen: {languages}
+| |Sprachen: {languages}
+
 |===
 
 _{rate-note}_
