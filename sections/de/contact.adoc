@@ -4,14 +4,15 @@
 ****
 [cols="1,1"]
 |===
-|Freiberufler / Selbstständiger |Verfügbar ab: {availability-date}
-|Verfügbarkeit: {availability-percent} |
-//|Verfügbarkeit: {availability-percent} |davon vor Ort: {onsite-percent}
-|Wohnort: {location} |Jahrgang: {birth-year}
-// |Stundensatz: {hourly-rate} |Sprachen: {languages}
-| |Sprachen: {languages}
-
+|Freiberufler / Selbstständiger
+|Verfügbar ab: {availability-date}
+|Verfügbarkeit: {availability-percent}
+// |davon vor Ort: {onsite-percent}
+|Wohnort: {location}
+|Jahrgang: {birth-year}
+// |Stundensatz: {hourly-rate}
+|Sprachen: {languages}
 |===
 
-_{rate-note}_
+// _{rate-note}_
 ****
